@@ -1,0 +1,23 @@
+{% extends 'user/base.html' %}
+
+
+
+{% block content %}
+
+
+<div class="jumbotron">
+    {% if group %}
+    <h2>{{ group }}</h2>
+    
+<h4>Class tutor is {{ group.men_teacher }}.</h4>
+<h5>Number of pupils are {{ group.pupils.count }}:</h5>
+<ol class="list-group">
+    {% for pupil in group.pupils.all %}
+
+    <li class="list-group-item">{{ pupil.get_full_name }}</li>
+        {% endfor %}
+    </ol>
+</div>
+
+{% endif %}
+{% endblock %}

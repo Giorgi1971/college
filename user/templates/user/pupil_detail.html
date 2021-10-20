@@ -1,0 +1,11 @@
+{% extends 'user/base.html' %}
+
+
+
+{% block content %}
+
+<div class="p-3 bg-info text-white">
+<h4>{{ pupil }} from {{ pupil.group }}</h4>
+{{ pupil.group }} class tutor is <a style="color: black;" href="{% url 'user:teacher' pupil.group.men_teacher.pk %}">{{ pupil.group.men_teacher.get_full_name }}.</a>
+</div>
+{% endblock %}

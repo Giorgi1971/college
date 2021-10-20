@@ -1,0 +1,18 @@
+{% extends 'user/base.html' %}
+
+
+
+{% block content %}
+
+{{ teacher }}
+
+{% if teacher.group_meneger %}
+
+{% for men in teacher.group_meneger.all %}
+
+<h3>{{ teacher.get_full_name }} is a class tutor <a href="{% url 'user:group' men.pk %}">{{ men }}.</a></h3>
+<h4>In this group is {{ men.pupils.count }} people.</h4>
+
+{% endfor %}
+{% endif %}
+{% endblock %}

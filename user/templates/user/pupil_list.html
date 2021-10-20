@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+
+<h1>Pupils List Page:</h1>
+
+{% for pupil in pupil_list %}
+
+<a href="{% url 'user:pupil' pupil.pk %}"><h2>{{ pupil.first_name }} is {{ pupil.age }} years old. He in in {{ pupil.group }}.</h2></a>
+
+{% endfor %}
+
+
+{% endblock %}

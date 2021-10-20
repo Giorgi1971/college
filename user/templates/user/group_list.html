@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+
+<h3>Group List Page:</h3>
+<ul>
+{% for group in group_list %}
+
+<li><a href="{% url 'user:group' group.pk %}">{{ group.name }} is {{ pupil.pupil.count }}.</a></li>
+
+{% endfor %}
+
+</ul>
+{% endblock %}

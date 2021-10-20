@@ -1,0 +1,42 @@
+{% extends 'user/base.html' %}
+
+<h1>This  is index</h1>
+<h2>Giorgi</h2>
+
+{% block content %}
+
+<h2>This is Index Page!.</h2>
+
+{% if groups %}
+
+{% for group in groups %}
+<h2>{{group}} ({{group.pupils.count}} pupils. average age is {{ group.pupils.average }})</h2>
+
+<!-- აქედან მოსწავლეების გამოტანა -->
+{% if group.pupils.all %}
+<h4> Students:</h4>
+<ol> {% for pupil in group.pupils.all %} <li>{{pupil}} is {{ pupil.gender}}.</li> {%endfor%} </ol>
+{%endif%}
+<!-- მოსწავლეები დამთავრდა -->
+
+<!-- აქედან maswavleblebi გამოტანა -->
+{% if group.teachers.all %}
+<h4> teachers:</h4>
+<ol> {% for pupil in group.teachers.all %} <li>{{pupil}}</li> {%endfor%} </ol>
+{%endif%}
+<!-- მასწავლებლები  დამთავრდა -->
+
+<!-- აქედან საგნები გამოტანა -->
+{% if group.subjects.all %}
+<h4> Subjects:</h4>
+<ol> {% for pupil in group.subjects.all %} <li>{{pupil}}</li> {%endfor%} </ol>
+{%endif%}
+<!-- საგნები დამთავრდა -->
+
+{%endfor%}
+
+{% else %}
+<h2>No Groups yet! </h2>
+{% endif %}
+<p>Ok!</p>
+{% endblock %}
