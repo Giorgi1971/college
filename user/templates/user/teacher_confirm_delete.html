@@ -1,0 +1,15 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+
+
+<h3>
+    Delete {{ teacher.get_full_name }}?
+</h3>
+<form method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete">
+    <a class="btn btn-warning" href="{% url 'user:teacher' pk=teacher.pk %}">Cancel</a>
+</form>
+
+{% endblock %}

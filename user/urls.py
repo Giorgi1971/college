@@ -12,6 +12,7 @@ urlpatterns = [
     path('createteacher', TeacherCreateView.as_view(), name='createteacher'),
     path('teacher/<int:pk>', TeacherDetailView.as_view(), name='teacher'),
     path('updateteacher/<int:pk>', TeacherUpdateView.as_view(), name='updateteacher'),
+    path('deleteteacher/<int:pk>', TeacherDeleteView.as_view(), name='deleteteacher'),
     path('groups', GroupListView.as_view(), name='groups'),
     path('group/<int:pk>', GroupDetailView.as_view(), name='group'),
     path('pupils', PupilListView.as_view(), name='pupils'),

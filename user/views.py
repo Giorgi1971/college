@@ -51,6 +51,13 @@ class TeacherUpdateView(UpdateView):
     model = Teacher
 
 
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    success_url = reverse_lazy('user:teachers')
+
+
+
+
 class GroupListView(generic.ListView):
     def get_queryset(self):
         return Group.objects.all()

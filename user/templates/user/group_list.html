@@ -7,7 +7,7 @@
 <ul>
 {% for group in group_list %}
 
-<li><a href="{% url 'user:group' group.pk %}">{{ group.name }} is {{ pupil.pupil.count }}.</a></li>
+<li><a href="{% url 'user:group' group.pk %}">{{ group.name }} meneger -  {{ group.men_teacher }}.</a></li>
 
 {% endfor %}
 
