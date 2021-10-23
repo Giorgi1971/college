@@ -7,21 +7,23 @@
 
 <h1>Teachers List Page:</h1>
 
-<div class="card-deck">
-
-{% for teacher in teacher_list %}
-
-<div class="card bg-warning" style="width:400px">
-    <img class="card-img-top" src="{% static 'build/images/g1.jpg' %}" alt="Card image">
+<div class="row">
+  
+  {% for teacher in teacher_list %}
+  <div class="col-3">
+    <div class="card-deck">
+  
+  <div class="card bg-warning">
+    <img class="card-img-top" src="{{ teacher.photo.url }}" alt="Card image" style="height: 250px;">
     <div class="card-body">
-      <h5 class="card-title text-danger">{{ teacher.photo.url }}</h5>
-      <img src="{{ teacher.photo.url }}" alt="tttt">
       <h5 class="card-title">{{ teacher.get_full_name }}</h5>
       <p class="card-text">{{ teacher.first_name }} study - {{ teacher.subject }}</p>
       <a href="{% url 'user:teacher' teacher.pk %}" class="btn btn-primary">See Profile</a>
     </div>
   </div>
   
-{% endfor %}
+</div>
+</div>
+  {% endfor %}
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@ from .models import Teacher, Pupil
 from django import forms
 
 
-class UserCreatrForm(UserCreationForm):
+class TeacherCreatrForm(UserCreationForm):
     class Meta:
         fields = '__all__'
         model = Teacher()

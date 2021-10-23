@@ -1,9 +1,10 @@
+from django.forms import fields
 from django.shortcuts import render
 
 # Create your views here.
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import (CreateView, UpdateView, DeleteView, DetailView, ListView)
 from . import forms
 
 def index(request):
@@ -39,6 +40,17 @@ class TeacherDetailView(generic.DetailView):
     model = Teacher
 
 
+
+class TeacherCreateView(CreateView):
+    fields = ('subject', 'password', 'salary', 'photo', 'username', 'first_name', 'last_name', 'email')
+    model = Teacher
+
+
+class TeacherUpdateView(UpdateView):
+    fields = ('subject', 'salary', 'photo', 'username', 'first_name', 'last_name', 'email')
+    model = Teacher
+
+
 class GroupListView(generic.ListView):
     def get_queryset(self):
         return Group.objects.all()
@@ -55,6 +67,10 @@ class PupilListView(generic.ListView):
 
 class PupilDetailView(generic.DetailView):
     model = Pupil
+
+
+
+
 
 
 class SignUp(CreateView):

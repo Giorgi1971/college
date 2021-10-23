@@ -1,0 +1,24 @@
+{% extends 'user/base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+<h1>Create Teacher Page!</h1>
+
+{% if not form.instance.pk %}
+<h5>Create Teacher!</h5>
+{% else %}
+<h5>Update Teacher info!</h5>
+{% endif %}
+<div class="jumbotron">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+    
+{% endblock %}

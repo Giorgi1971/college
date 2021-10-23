@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.utils.translation import gettext_lazy as _
-
+from django.urls import reverse, reverse_lazy
 # Create your models here.
 
 
@@ -57,6 +57,9 @@ class Teacher(User):
 
     def __str__(self) -> str:
         return self.last_name + ' ' +self.first_name
+
+    def get_absolute_url(self):
+        return reverse('user:teacher', kwargs={'pk':self.pk})
 
 
 class Group(models.Model):
