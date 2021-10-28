@@ -135,4 +135,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = '/basic_app/user_login' # ჩემოთ ჩავსვი სიდღანაც
+
+
+LOGIN_URL = 'user:login'
+LOGOUT_REDIRECT_URL = 'user:login'
+LOGIN_REDIRECT_URL = 'build:lessons'

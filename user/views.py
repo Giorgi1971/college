@@ -1,11 +1,15 @@
 from django.forms import fields
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # Create your views here.
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 from django.views.generic import (CreateView, UpdateView, DeleteView, DetailView, ListView)
 from . import forms
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 
 def index(request):
     return render(request, 'user/index.html',context={'index':'from index'})
@@ -20,15 +24,15 @@ from django.http import request
 from . models import *
 from django.views import generic
 
-
+@login_required
 def index(request):
     template_name = 'user/index.html'
     groups = Group.objects.all()
     return render(request, template_name,{"groups":groups})
 
 
-class TeacherListView(generic.ListView):
-    # model = Teacher
+class TeacherListView(LoginRequiredMixin, ListView):
+    model = Teacher
     # template_name = 'intst/teacher_list.html'
     # context_object_name = 'latest_question_list'
 
@@ -38,7 +42,6 @@ class TeacherListView(generic.ListView):
 
 class TeacherDetailView(generic.DetailView):
     model = Teacher
-
 
 
 class TeacherCreateView(CreateView):
@@ -56,11 +59,8 @@ class TeacherDeleteView(DeleteView):
     success_url = reverse_lazy('user:teachers')
 
 
-
-
 class GroupListView(generic.ListView):
-    def get_queryset(self):
-        return Group.objects.all()
+    model = Group
 
 
 class GroupDetailView(generic.DetailView):
@@ -74,10 +74,6 @@ class PupilListView(generic.ListView):
 
 class PupilDetailView(generic.DetailView):
     model = Pupil
-
-
-
-
 
 
 class SignUp(CreateView):
